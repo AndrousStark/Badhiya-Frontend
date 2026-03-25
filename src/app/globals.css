@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -49,38 +49,54 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Badhiya Indian Color Theme — Warm White + Saffron + Green */
+  --background: #FFFBF5;
+  --foreground: #1A1A2E;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A2E;
+  --primary: #FF6B00;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFF3E8;
+  --secondary-foreground: #1A1A2E;
+  --muted: #F8F5F0;
+  --muted-foreground: #6B7280;
+  --accent: #FFF3E8;
+  --accent-foreground: #FF6B00;
+  --destructive: #E53935;
+  --border: #F0EBE3;
+  --input: #F0EBE3;
+  --ring: #FF6B00;
+  --chart-1: #FF6B00;
+  --chart-2: #1B8C3A;
+  --chart-3: #1A56DB;
+  --chart-4: #F9A825;
+  --chart-5: #7C3AED;
+  --radius: 0.75rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1A1A2E;
+  --sidebar-primary: #FF6B00;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFF3E8;
+  --sidebar-accent-foreground: #FF6B00;
+  --sidebar-border: #F0EBE3;
+  --sidebar-ring: #FF6B00;
+
+  /* Badhiya Brand Tokens */
+  --saffron: #FF6B00;
+  --saffron-light: #FFF3E8;
+  --saffron-dark: #E55D00;
+  --green: #1B8C3A;
+  --green-light: #E8F5EC;
+  --blue: #1A56DB;
+  --blue-light: #EBF1FF;
+  --red: #E53935;
+  --red-light: #FDEAEA;
+  --gold: #F9A825;
+  --gold-light: #FFF8E1;
+  --warm-white: #FFFBF5;
+  --warm-gray: #F8F5F0;
 }
 
 .dark {
@@ -123,8 +139,44 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
 }
+
+/* Premium smooth scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E0D6CA; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #C4B8A8; }
+
+/* Badhiya animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-saffron {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 107, 0, 0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+.animate-fade-in-up-delay-1 { animation: fadeInUp 0.5s ease-out 0.1s both; }
+.animate-fade-in-up-delay-2 { animation: fadeInUp 0.5s ease-out 0.2s both; }
+.animate-fade-in-up-delay-3 { animation: fadeInUp 0.5s ease-out 0.3s both; }
+.animate-shimmer { animation: shimmer 2s linear infinite; background-size: 200% 100%; }
+.animate-pulse-saffron { animation: pulse-saffron 2s ease-in-out infinite; }
+
+/* Indian tricolor gradient */
+.gradient-india { background: linear-gradient(135deg, #FF6B00 0%, #FFFFFF 50%, #1B8C3A 100%); }
+.gradient-saffron { background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 50%, #FFB066 100%); }
+.gradient-hero { background: linear-gradient(135deg, #FFFBF5 0%, #FFF3E8 50%, #FFFBF5 100%); }
+
+/* Card hover premium effect */
+.card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 40px -8px rgba(255, 107, 0, 0.12); }
